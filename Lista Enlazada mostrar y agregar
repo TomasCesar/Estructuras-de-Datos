@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Lista{
+  int dato;
+  struct Lista *siguiente;
+}Lista;
+
+Lista *primero = NULL;
+Lista *ultimo = NULL;
+
+
+void insertarLista(){
+    Lista *nuevo = (Lista*)malloc(sizeof(Lista));
+    printf("ingresar el nuevo dato");
+    scanf("%d",&nuevo->dato);
+    if(primero==NULL){
+      primero=nuevo;
+      primero->siguiente=NULL;
+      ultimo=nuevo;
+    }
+    else {
+      ultimo->siguiente=nuevo;
+      nuevo->siguiente=NULL;
+      ultimo=nuevo;
+    }
+
+}
+
+void mostrarLista(){
+    Lista *actual = (Lista*)malloc(sizeof(Lista));
+    actual=primero;
+    if(primero != NULL){
+      while(actual != NULL){
+      printf("\n %d \n", actual->dato);
+      actual= actual->siguiente;
+      }
+    }
+    else{
+        printf("\n La lista esta vacia\n");
+    }
+}
+
+int main(){
+  int num;
+  printf("cuantos datos quieres engresar:");
+  scanf("%d",&num);
+  for(int i=0;i<num;i++){
+    insertarLista();
+  }
+  mostrarLista();
+  scanf("%s",&num); //hace la funcion system("pause");
+  return 0;
+}
