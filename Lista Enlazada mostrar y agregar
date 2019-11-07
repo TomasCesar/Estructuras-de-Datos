@@ -1,54 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Lista{
+struct Lista{
   int dato;
-  struct Lista *siguiente;
-}Lista;
-
-Lista *primero = NULL;
-Lista *ultimo = NULL;
-
-
-void insertarLista(){
-    Lista *nuevo = (Lista*)malloc(sizeof(Lista));
-    printf("ingresar el nuevo dato");
-    scanf("%d",&nuevo->dato);
-    if(primero==NULL){
-      primero=nuevo;
-      primero->siguiente=NULL;
-      ultimo=nuevo;
-    }
-    else {
-      ultimo->siguiente=nuevo;
-      nuevo->siguiente=NULL;
-      ultimo=nuevo;
-    }
-
-}
-
-void mostrarLista(){
-    Lista *actual = (Lista*)malloc(sizeof(Lista));
-    actual=primero;
-    if(primero != NULL){
-      while(actual != NULL){
-      printf("\n %d \n", actual->dato);
-      actual= actual->siguiente;
-      }
-    }
-    else{
-        printf("\n La lista esta vacia\n");
-    }
-}
-
+  struct Lista* siguiente;
+};
+struct Lista *insertar(int, struct Lista*);
 int main(){
   int num;
-  printf("cuantos datos quieres engresar:");
-  scanf("%d",&num);
-  for(int i=0;i<num;i++){
-    insertarLista();
+  struct Lista *Lista = NULL;
+  Lista= insertar(0,Lista);
+  Lista= insertar(4,Lista);
+  Lista= insertar(3,Lista);
+  Lista= insertar(5,Lista);
+  while(Lista!=NULL){
+    printf("%d\n",Lista->dato);
+    Lista=Lista->siguiente;
   }
-  mostrarLista();
-  scanf("%s",&num); //hace la funcion system("pause");
-  return 0;
+    scanf("%d",&num);
+    return 0;
+}
+
+struct Lista *insertar (int dato,struct Lista* Lista){
+  struct  Lista *nuevo = NULL;
+  struct  Lista *aux=NULL;
+  nuevo = (struct Lista*)malloc(sizeof(struct Lista));
+  nuevo->dato=dato;
+  if(Lista==NULL){
+    Lista=nuevo;
+  }
+  else{
+    aux=Lista;
+    while(aux->siguiente!=NULL){
+      aux=aux->siguiente;
+    }
+    aux->siguiente=nuevo;
+  }
+  return Lista;
 }
