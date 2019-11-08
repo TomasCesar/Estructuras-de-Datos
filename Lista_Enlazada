@@ -6,6 +6,9 @@ struct Lista{
   struct Lista* siguiente;
 };
 struct Lista *insertar(int, struct Lista*);
+struct Lista *mostrar(struct Lista*);
+struct Lista *borrar(int,struct Lista*);
+
 int main(){
   int num;
   struct Lista *Lista = NULL;
@@ -13,10 +16,10 @@ int main(){
   Lista= insertar(4,Lista);
   Lista= insertar(3,Lista);
   Lista= insertar(5,Lista);
-  while(Lista!=NULL){
-    printf("%d\n",Lista->dato);
-    Lista=Lista->siguiente;
-  }
+  mostrar(Lista);
+  //Lista= borrar(5,Lista);
+  Lista= borrar(7,Lista);
+  mostrar(Lista);
     scanf("%d",&num);
     return 0;
 }
@@ -35,6 +38,47 @@ struct Lista *insertar (int dato,struct Lista* Lista){
       aux=aux->siguiente;
     }
     aux->siguiente=nuevo;
+  }
+  return Lista;
+}
+
+struct Lista *borrar(int dato, struct Lista* Lista){
+  struct Lista *aux=NULL;
+  struct Lista *primero=NULL;
+  primero=Lista;
+  if(primero==NULL){
+    printf("\nNO hay datos a eliminar");;
+  }
+  else{
+    while(primero->dato!=dato ){
+      aux=primero;
+      primero=primero->siguiente;
+      if(primero->siguiente==NULL){
+        printf("\nEL dato no existe\n");
+        break;
+      }
+    }
+    if(aux==NULL){
+      aux=primero;
+      primero=primero->siguiente;
+      free(aux);
+    }
+    else if(primero->siguiente==NULL){
+      aux->siguiente=NULL;
+      free(primero);
+    }
+    else{
+        aux->siguiente=primero->siguiente;
+        free(primero);
+    }
+  }
+  return Lista;
+}
+
+struct Lista *mostrar(struct Lista* Lista){
+  while(Lista!=NULL){
+    printf("%d\n",Lista->dato);
+    Lista=Lista->siguiente;
   }
   return Lista;
 }
