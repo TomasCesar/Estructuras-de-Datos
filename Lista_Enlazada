@@ -51,12 +51,12 @@ struct Lista *borrar(int dato, struct Lista* Lista){
   }
   else{
     while(primero->dato!=dato ){
+       if(primero->siguiente==NULL){
+          printf("\nEL dato no existe\n");
+         break;
+       }
       aux=primero;
       primero=primero->siguiente;
-      if(primero->siguiente==NULL){
-        printf("\nEL dato no existe\n");
-        break;
-      }
     }
     if(aux==NULL){
       aux=primero;
