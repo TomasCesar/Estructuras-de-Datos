@@ -1,0 +1,10 @@
+char* gameOfStones(int n){
+    double result  = n % 7;        
+    double result2  = (n -1) % 7;
+    if (result == 0 || result2 == 0){
+        return "Second";
+    }
+    else{
+         return "First";
+    }
+}
