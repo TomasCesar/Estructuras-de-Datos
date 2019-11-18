@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+    int Ye,Ya,Me,Ma,De,Da;
+    int res=0;
+    scanf("%d %d %d",&Da,&Ma,&Ya);
+    scanf("%d %d %d",&De,&Me,&Ye);
+    if(((De>=Da)&&(Me>=Ma)&&(Ye>=Ya))||((Me>Ma)&&(Ye>=Ya))||(Ye>Ya)){
+        printf("0");
+    }
+    else if((De<Da)&&(Me==Ma)&&(Ye==Ya)){
+        res=15*(Da-De);
+        printf("%d",res);
+    }
+    else if((Me<Ma)&&(Ye==Ya)){
+        res=500*(Ma-Me);
+        printf("%d",res);
+    }
+    else{
+        printf("0");
+    }
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
+    return 0;
+}
