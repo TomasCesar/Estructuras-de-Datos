@@ -1,0 +1,25 @@
+// Complete the insertNodeAtHead function below.
+
+/*
+ * For your reference:
+ *
+ * SinglyLinkedListNode {
+ *     int data;
+ *     SinglyLinkedListNode* next;
+ * };
+ *
+ */
+SinglyLinkedListNode* insertNodeAtHead(SinglyLinkedListNode* llist, int data) {
+    SinglyLinkedListNode *nuevo = NULL;
+    nuevo = (SinglyLinkedListNode*)malloc(sizeof(SinglyLinkedListNode));
+    nuevo->data=data;
+    if(llist==NULL){
+      llist=nuevo;
+      llist->next=NULL;
+    }
+    else{
+        nuevo->next=llist;
+        llist=nuevo;
+    }
+    return llist;
+}
