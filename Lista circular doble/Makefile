@@ -1,4 +1,4 @@
-contigua.o: cirdoble.c
+cirdoble.o: cirdoble.c
  gcc cirdoble.c -c
 main.o: main.c
  gcc main.c -c
