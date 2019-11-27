@@ -1,4 +1,4 @@
-contigua.o: circular.c
+circular.o: circular.c
 	gcc circular.c -c
 main.o: main.c
 	gcc main.c -c
