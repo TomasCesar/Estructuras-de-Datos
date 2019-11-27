@@ -1,4 +1,4 @@
-contigua.o: pila.c
+pila.o: pila.c
 	gcc pila.c -c
 main.o: main.c
 	gcc main.c -c
